@@ -1,0 +1,46 @@
+$handsXOffset : 246px;
+$handsYOfset : 246px;
+html, body{
+    margin: 0;
+    padding: 0;
+    
+    background-color: #293B29;
+}
+.clock{
+    display: flex;
+    width: 1280px;
+    height: 800px;
+    justify-content: center;
+    align-items: center;
+}
+.bg{
+    z-index: 1;
+}
+@mixin timeFunc {
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+.sec{
+    @include timeFunc();
+    position: absolute;
+    left: 634px;
+    top: 400px;
+    z-index: 2;
+    transform-origin: 5px 0%;
+}
+.min{
+    @include timeFunc();
+    position: absolute;
+    left: 636px;
+    top: 308px;
+    z-index: 4;
+    transform-origin: 4px 97% ;
+}
+.hour{
+    @include timeFunc();
+    position: absolute;
+    left: 636px;
+    top: 396px;
+    z-index: 3;
+    transform-origin: 4px 97% ;
+}
