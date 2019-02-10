@@ -6,11 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>3F</title>
     <link rel="stylesheet" href="./asserts/scss/style.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.2/vue.min.js'></script>
     <script src="./asserts/js/all.js" defer></script>
 </head>
 <body>
     <div class="calculator">
-        
+        <div class="lcd">
+            <div class="process">{{ currentHistory }}</div>
+            <div class="input">{{ val }}</div>
+        </div>
+        <div v-on:click="input(7)" class="btn">7</div>
+        <div v-on:click="input(8)" class="btn">8</div>
+        <div v-on:click="input(9)" class="btn">9</div>
+        <div v-on:click="operation(' / ')" class="btn funcBtn">÷</div>
+        <div v-on:click="input(4)" class="btn">4</div>
+        <div v-on:click="input(5)" class="btn">5</div>
+        <div v-on:click="input(6)" class="btn">6</div>
+        <div v-on:click="operation(' * ')" class="btn funcBtn">×</div>
+        <div v-on:click="input(1)" class="btn">1</div>
+        <div v-on:click="input(2)" class="btn">2</div>
+        <div v-on:click="input(3)" class="btn">3</div>
+        <div v-on:click="operation(' + ')" class="btn funcBtn">+</div>
+        <div v-on:click="input(0)" class="btn">0</div>
+        <div v-on:click="input('00')" class="btn">00</div>
+        <div v-on:click="input('.')" class="btn">.</div>
+        <div v-on:click="operation(' - ')" class="btn funcBtn">-</div>
+        <div v-on:click="init" class="btn clearBtn">AC</div>
+        <div v-on:click="backspace" class="btn clearBtn">⌫</div>
+        <div v-on:click="calculate" class="equalBtn"><p>=</p> </div>
     </div>
 </body>
 </html>
