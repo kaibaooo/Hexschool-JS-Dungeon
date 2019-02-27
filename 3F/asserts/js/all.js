@@ -27,91 +27,68 @@ let app = new Vue({
             this.currentHistory += this.val + this.currentOpt;
         },
         renderAns:function(){
+            console.log('renderAns val ' + this.val);
+            console.log('renderAns ans ' + this.ans);
             this.val = this.ans;
         },
         backspace:function(){
             this.val = String(this.val).slice(0, String(this.val).length-1);
         },
         input: function(num){
-            this.isLastOpt = false;
-            console.log(String(this.val)+String(num));
-            if(num == '.'){
-                if(!this.isDot){
-                    // console.log(this.isDot)
-                    this.val = String(this.val)+String(num);
-                    this.isDot = true;
-                    // console.log(this.isDot)
-                }
-                return;
-            }
-            // 0不能重複輸入
-            if(this.val == '0' && (num == '0' || num== '00')) return;
-            // 0的時候直接更改為輸入的數字 或是已經在運算中途 也改為輸入的數字
-            if(this.val == '0' || (this.currentOpt && this.isLastOpt) || this.isLastOpt){
+            if(this.val == 0){
                 this.val = String(num);
             }
             else{
-                    this.val = String(this.val)+String(num);
+                this.val += String(num);
             }
-            
-                
-            console.log(`val:${String(this.val)}`)
         },
         operation: function(opt){
-            // console.log(opt);
-            if(this.isLastOpt) return;
-            this.isLastOpt = true;
-            this.queue = parseFloat(this.val);
-            this.ans = parseFloat(this.ans);
-            if(this.currentOpt == ''){
-                this.ans = this.queue;
-                this.currentOpt = opt;
-            }
-            else{
-                switch(this.currentOpt){
-                    case ' + ':
-                        console.log(this.ans, this.queue)
-                        this.ans +=this.queue;
-                        break;
-                    case ' - ':
-                        this.ans -=this.queue;
-                        break;
-                    case ' * ':
-                        this.ans *=this.queue;
-                        break;
-                    case ' / ':
-                        this.ans = this.queue / this.val;
-                        break;
-                }
-                console.log(this.currentOpt)
-                this.currentOpt = opt;
-            }
-            this.renderInputHistory();
-            console.log(`ans:${this.ans}`)
             this.val = this.ans;
-        },
-        calculate:function(){
-            this.queue = parseFloat(this.queue);
+            this.currentOpt = opt;
+            if(this.ans == 0) {
+                this.ans = this.val;
+                this.val = '0';
+                return;
+            }
+            this.ans = parseFloat(this.ans);
             this.val = parseFloat(this.val);
             switch(this.currentOpt){
-                case ' + ':
-                    console.log(this.val, this.queue)
-                    this.ans +=this.queue;
-                    console.log(this.val)
+                case '+':
+                    this.ans += this.val;
                     break;
-                case ' - ':
-                    this.ans -=this.queue;
+                case '-':
+                    this.ans -= this.val;
                     break;
-                case ' * ':
-                    this.ans *=this.queue;
+                case '*':
+                    this.ans *= this.val;
                     break;
-                case ' / ':
-                    this.ans = this.queue / this.val;
+                case '/':
+                    console.log(`${this.ans} / ${this.val}`)
+                    this.ans =  this.ans / this.val;
                     break;
             }
-            this.renderAns()
-            this.currentHistory = '';
-            finished = true;
+            this.val = '0';
+            console.log(this.ans)
+        },
+        calculate:function(){
+            this.ans = parseFloat(this.ans);
+            this.val = parseFloat(this.val);
+            switch(this.currentOpt){
+                case '+':
+                    this.ans += this.val;
+                    break;
+                case '-':
+                    this.ans -= this.val;
+                    break;
+                case '*':
+                    this.ans *= this.val;
+                    break;
+                case '/':
+                    console.log(`${this.ans} / ${this.val}`)
+                    this.ans =  this.ans / this.val;
+                    break;
+            }
+            this.val = this.ans;
+            console.log(this.ans)
         }
-    }
-});
+}});
