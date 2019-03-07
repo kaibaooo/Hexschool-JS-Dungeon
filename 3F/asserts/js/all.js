@@ -30,7 +30,13 @@ let app = new Vue({
         backspace:function(){
             this.val = String(this.val).slice(0, String(this.val).length-1);
         },
-        input: function(num){
+        input: function (num) {
+            if (String(this.val).length > 10) {
+                // console.log(56(-String(this.ans).length - 10));
+                // let offset = 56 - Math.pow(String(this.val).length, 1.1);
+                // console.log(offset);
+                // document.querySelector('.input').style.fontSize = `${offset}px`;
+            }
             if(this.isFinished){
                 //若上階段計算已完成，則清除資料
                 this.init();
@@ -65,7 +71,13 @@ let app = new Vue({
         },
         operation: function(opt){
             // this.val = this.ans;
+            
             this.currentOpt = opt;
+            if (this.isFinished) {
+                this.currentHistory = '';
+                this.ans = 0;
+                this.isFinished = false;    
+            }
             if(this.ans == 0) {
                 this.ans = this.val;
                 console.log(this.val);
@@ -74,6 +86,7 @@ let app = new Vue({
                 this.isDot = false;
                 return;
             }
+            
             console.log(this.val);
             this.ans = parseFloat(this.ans);
             this.val = parseFloat(this.val);
@@ -124,6 +137,10 @@ let app = new Vue({
             this.currentHistory += `${this.val}`
             this.val = parseFloat(this.ans.toPrecision(12));
             console.log(this.ans)
+            this.opt = '';
+            
             this.isFinished = true;
         }
-}});
+    }
+});
+
