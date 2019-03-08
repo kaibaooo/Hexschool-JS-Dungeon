@@ -55,8 +55,6 @@ p {
   font-size: 56px;
   height: 66px;
   margin-right: 16px;
-  overflow-x:scroll;
-  overflow-y: hidden;
 }
 
 .btn {

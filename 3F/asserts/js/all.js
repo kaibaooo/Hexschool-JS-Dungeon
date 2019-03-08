@@ -66,6 +66,8 @@ let app = new Vue({
             }
             else{
                 //正常輸入，接續下去
+                if(String(this.val).length % 4 == 3)
+                    this.val += ',';
                 this.val += String(num);
             }
         },
