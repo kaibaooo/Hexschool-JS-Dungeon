@@ -1,5 +1,6 @@
 // TODO:
 // overflow
+// infinite
 let app = new Vue({
     el: '.calculator',
     data: {
@@ -46,7 +47,14 @@ let app = new Vue({
             }
         },
         backspace:function(){
+            //when delete dot, reset it
+            if(String(this.val)[String(this.val).length-1] == '.'){
+                console.log(String(this.val)[String(this.val).length-1]);
+                this.isDot = false;
+            }
             this.val = String(this.val).slice(0, String(this.val).length-1);
+            if(this.val == '') this.val = 0;
+            console.log(this.val)
             this.renderNum();
         },
         input: function (num) {
@@ -62,11 +70,12 @@ let app = new Vue({
                 //當輸入為 . 時，且this.isDot的狀態為FALSE(已有小數點)時，將狀態更改為TRUE，表示進入小數點狀態
                 this.isDot = true;
             }
-            if(this.val == 0 && !this.isDot){
+            if(this.val == '0' && !this.isDot){
                 //輸入狀態為0且尚未是小數點狀態
                 if(num == '.' ){
                     //此時輸入小數點會將小數點加進去，變為0.
                     this.val += String(num);
+                    this.renderNum();
                     return;
                 }
                 if(num == '00'){
@@ -85,8 +94,8 @@ let app = new Vue({
         },
         operation: function(opt){
             // this.val = this.ans;
+            if(this.currentOpt == '')this.currentOpt = opt;
             
-            this.currentOpt = opt;
             if (this.isFinished) {
                 this.currentHistory = '';
                 this.ans = 0;
@@ -98,6 +107,7 @@ let app = new Vue({
                 this.currentHistory += `${this.val} ${opt} `
                 this.val = '0';
                 this.isDot = false;
+                // this.currentOpt = opt;
                 return;
             }
             
@@ -115,7 +125,7 @@ let app = new Vue({
                     break;
                 case '*':
                     this.ans *= this.val;
-                    console.log(this.ans);
+                    console.log(`${this.ans} * ${this.val}`);
                     break;
                 case '/':
                     console.log(`${this.ans} / ${this.val}`);
@@ -126,6 +136,7 @@ let app = new Vue({
                 this.currentHistory += `${this.val} ÷ `
             else
                 this.currentHistory += `${this.val} ${opt} `
+            this.currentOpt = opt;
             this.val = '0';
             this.isDot = false;
             console.log(this.ans)
