@@ -8,7 +8,8 @@ let app = new Vue({
         currentOpt:'',
         currentHistory:'',
         isDot : false,
-        isFinished: false
+        isFinished: false,
+        showNum:''
     },
     methods:{
         init:function(){
@@ -18,6 +19,7 @@ let app = new Vue({
             this.currentHistory = '';
             this.isDot = false;
             this.isFinished = false;
+            this.showNum = '';
         },
         renderInputHistory:function(){
             this.currentHistory += this.val + this.currentOpt;
@@ -27,21 +29,31 @@ let app = new Vue({
             console.log('renderAns ans ' + this.ans);
             this.val = this.ans;
         },
+        renderNum:function(){
+            this.showNum = String(this.val);
+            let len;
+            if(this.val.length<4) return;
+            if(this.val.includes('.'))
+                len = this.val.slice(0,this.val.indexOf('.')).length;
+            else
+                len = this.val.length
+            let count = Math.floor((len-1)/3);
+            let pos = len % 3?len % 3-1:2;
+            for(let i = 0;i<count;i++){
+                this.showNum = this.showNum.slice(0, pos+1) + ',' + this.showNum.slice(pos+1, this.showNum.length);
+                console.log(this.showNum.slice(0, pos+1))
+                if(i != count-1) pos+=4;
+            }
+        },
         backspace:function(){
             this.val = String(this.val).slice(0, String(this.val).length-1);
+            this.renderNum();
         },
         input: function (num) {
-            if (String(this.val).length > 10) {
-                // console.log(56(-String(this.ans).length - 10));
-                // let offset = 56 - Math.pow(String(this.val).length, 1.1);
-                // console.log(offset);
-                // document.querySelector('.input').style.fontSize = `${offset}px`;
-            }
             if(this.isFinished){
                 //若上階段計算已完成，則清除資料
                 this.init();
             }
-            console.log(this.val, this.isDot)
             if(num == '.' && this.isDot){
                 //當輸入為 . 時，且this.isDot的狀態為TRUE(已有小數點)時，不做任何動作，禁止輸入
                 return;
@@ -66,10 +78,10 @@ let app = new Vue({
             }
             else{
                 //正常輸入，接續下去
-                if(String(this.val).length % 4 == 3)
-                    this.val += ',';
                 this.val += String(num);
             }
+            this.renderNum();
+            console.log(this.val, this.isDot)
         },
         operation: function(opt){
             // this.val = this.ans;
@@ -137,7 +149,8 @@ let app = new Vue({
                     break;
             }
             this.currentHistory += `${this.val}`
-            this.val = parseFloat(this.ans.toPrecision(12));
+            this.val = String(parseFloat(this.ans.toPrecision(12)));
+            this.renderNum();
             console.log(this.ans)
             this.opt = '';
             
