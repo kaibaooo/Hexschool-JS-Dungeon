@@ -6,11 +6,13 @@
 ### 1F 九九乘法表
 
 使用技術 : Vanilla JS  
+已知BUG : 暫無  
 [DEMO](https://kaibaooo.github.io/Hexschool-JS-Dungeon/1F/index.html)  
 
 ### 2F 時鐘
 
 使用技術 : Vanilla JS + SCSS  
+已知BUG : 暫無  
 [DEMO](https://kaibaooo.github.io/Hexschool-JS-Dungeon/2F/index.html)  
 
 ### 3F 計算機
@@ -21,9 +23,10 @@
 
 ### 4F 時區
 
-使用技術 :  
-已知BUG :  
-[DEMO](#)  
+使用技術 :  VanillaJS + SCSS
+所需知識 : Timestamp
+已知BUG :  V1可能有 V2應該沒有
+[DEMO](https://kaibaooo.github.io/Hexschool-JS-Dungeon/4F/index.html)
 
 ### 5F 全台空氣指標儀表板  
 
