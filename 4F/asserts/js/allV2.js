@@ -1,11 +1,10 @@
-let timeOffset = [-12,-8,-1,0,3];
 let loc = ['America/New_York', 'Europe/London', 'Asia/Bangkok', 'Asia/Taipei', 'Australia/Sydney'];
 let monthCode = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 let contentContainer = document.querySelector('.content');
 let blinkText = '：';
 function updateClock() {
     contentContainer.innerHTML = '';
-    for (let i = 0; i < timeOffset.length; i++){
+    for (let i = 0; i < loc.length; i++){
         let date = new Date();
         let timeString = date.toLocaleString('zh-TW', { timeZone: loc[i], hour12: false });
         let timeDate = timeString.split(' ')[0];
