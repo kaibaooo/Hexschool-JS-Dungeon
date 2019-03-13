@@ -3,7 +3,8 @@ let loc = ['NEW YORK', 'LONDON', 'BANGKOK', 'TAIWAN', 'SYDNEY'];
 let monthCode = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 let monthDay = [31,28,31,30,31,30,31,31,30,31,30,31];
 let contentContainer = document.querySelector('.content');
-function updateClock(){
+let blinkText = '：';
+function updateClock() {
     contentContainer.innerHTML = '';
     for (let i = 0; i < timeOffset.length; i++){
         let date = new Date();
@@ -60,15 +61,12 @@ function updateClock(){
                 <div class="date">${dayInfo}</div>
             </div>
             <div class="clock">
-                ${hour}:${min}
+                ${hour}<span style="font-size:0.8em;">${blinkText}</span>${min}
             </div>
         </div>
         `
     }
+    blinkText = blinkText == '：' ? '　' : '：';
 }
-// 前一小時是前一天 if hour < 0 || hour > 12
-// 前一天是上個月 if 
-// 前一天是去年
-// 
 updateClock();
 setInterval(updateClock,1000);
