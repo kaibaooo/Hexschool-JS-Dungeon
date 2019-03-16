@@ -1,4 +1,5 @@
 # Hexschool-JS-Dungeon
+![](https://github.com/kaibaooo/Hexschool-JS-Dungeon/blob/master/res/wallpaper-1920x1080.png?raw=true)
 ## Udemy Course URL
 [Udemy](https://www.udemy.com/js-underground)
 ## 破關神器們
