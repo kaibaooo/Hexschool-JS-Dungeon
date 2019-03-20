@@ -10,7 +10,7 @@
 |2F|時鐘|Vanilla JS + SCSS|None|None|[Link](https://github.com/kaibaooo/Hexschool-JS-Dungeon/tree/master/2F)|[DEMO](https://kaibaooo.github.io/Hexschool-JS-Dungeon/2F/index.html)  |
 |3F|計算機|Vue + SCSS|None|Infinity, Overflow|[Link](https://github.com/kaibaooo/Hexschool-JS-Dungeon/tree/master/3F)|[DEMO](https://kaibaooo.github.io/Hexschool-JS-Dungeon/3F/index.html)|
 |4F|時區|Vanilla JS + SCSS|Timestamp|V1可能有 V2應該沒有|[Link](https://github.com/kaibaooo/Hexschool-JS-Dungeon/tree/master/4F)|[DEMO](https://kaibaooo.github.io/Hexschool-JS-Dungeon/4F/index.html)|
-|5F|全台空氣指標儀表板||||||
+|5F|全台空氣指標儀表板|Vue + SCSS|CORS|None|[Link](https://github.com/kaibaooo/Hexschool-JS-Dungeon/tree/master/5F)|[DEMO](https://kaibaooo.github.io/Hexschool-JS-Dungeon/5F/index.html)|
 |6F|60秒算數遊戲||||||
 |7F|畫版||||||
 |8F|井字遊戲||||||
