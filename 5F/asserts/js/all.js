@@ -81,32 +81,41 @@ const app = new Vue({
             this.SO2 = selectedCity[0].SO2;
             this.NO2 = selectedCity[0].NO2; 
             this.PublishTime = selectedCity[0].PublishTime;
-            document.querySelector('.general-info').innerHTML = `
-            <h3 class="current-area">${this.currentSite}</h3>
-                <h3 class="current-AQI ${this.fillColor(this.AQI)}">${this.AQI}</h3>
-                <div class="clear"></div>
-            `
+            this.updatePanel();
             document.querySelector('.areas').innerHTML = '';
             for(let idx in selectedCity){
                 let addColorCity = selectedCity[idx];
                 console.log(this.fillColor(selectedCity[idx].AQI));
                 addColorCity['color'] = this.fillColor(selectedCity[idx].AQI);
                 this.selectedSite.push(selectedCity[idx]);
-                // document.querySelector('.areas').innerHTML+=`
-                // <div class="area-info">
-                //     <h3 class="name ${this.fillColor(selectedCity[idx].AQI)}">${selectedCity[idx].name}</h3>
-                //     <h3 class="AQI">${selectedCity[idx].AQI}</h3>
-                //     <div class="clear"></div>
-                // </div>   
-                // `
             }
             console.log(this.selectedSite);
             let areaNumber = document.querySelectorAll('.area-info');
             
         },
-        changeSite:function(e, name){
+        changeSite:function(e){
             console.log(e.currentTarget.children[0].textContent);
-            console.log(name);
+            for(let idx in this.selectedSite){
+                console.log(this.selectedSite[idx].name)
+                if(this.selectedSite[idx].name == e.currentTarget.children[0].textContent){
+                    this.currentSite = this.selectedSite[idx].name;
+                    this.AQI = this.selectedSite[idx].AQI;
+                    this.O3 = this.selectedSite[idx].O3;
+                    this.PM10 = this.selectedSite[idx].PM10;
+                    this.PM2dot5 = this.selectedSite[idx]['PM2.5'];
+                    this.CO = this.selectedSite[idx].CO;
+                    this.SO2 = this.selectedSite[idx].SO2;
+                    this.NO2 = this.selectedSite[idx].NO2; 
+                    this.updatePanel();
+                }
+            }
+        },
+        updatePanel:function(){
+            document.querySelector('.general-info').innerHTML = `
+                <h3 class="current-area">${this.currentSite}</h3>
+                    <h3 class="current-AQI ${this.fillColor(this.AQI)}">${this.AQI}</h3>
+                    <div class="clear"></div>
+                `
         },
         fillColor:function(val){
             if(val <= 50){

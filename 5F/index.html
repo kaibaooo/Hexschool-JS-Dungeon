@@ -102,7 +102,7 @@
             </div>
         </div>
         <div class="areas">
-            <div v-for="ele in selectedSite" class="area-info" v-on:click="changeSite(ele.name)">
+            <div v-for="ele in selectedSite" class="area-info" v-on:click="changeSite">
 
                     <h3 class="name" v-bind:class="ele.color">{{ele.name}}</h3>
                     <h3 class="AQI " >{{ele.AQI}}</h3>
@@ -115,7 +115,8 @@
     </main>
     </div>
     <footer>
-
+        <p class="resource">資料來源：行政院環境保護署</p>
+        <p class="licence">Copyright © 2019 HexSchool. All rights reserved.</p>
     </footer>
 </body>
 </html>
