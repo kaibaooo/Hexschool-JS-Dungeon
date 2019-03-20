@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>5F</title>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.min.js'></script>
-    <script src="./asserts/js/all.js"></script>
+    <script src="./asserts/js/all.js" defer></script>
     <link rel="stylesheet" href="./asserts/css/style.css">
     <!-- <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" /> -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300" rel="stylesheet">
 </head>
 <body>
-    <div class="wrapper">
+    <div id="wrapper">
     <header>
         <div class="title">
             <h1>空氣品質指標(AQI)</h1>
-            <select id="location">
-                <option value="">請選擇地區</option>
+            <select v-on:change="changeCity" v-model="currentCity" id="location">
+                
             </select>
         </div>
         <div class="info">
@@ -52,90 +52,70 @@
         </div>
     </header>
         <div class="seperater">
-            <h2 class="loc">高雄市</h2>
+            <h2 class="loc">{{ currentCity }}</h2>
             <svg width="70%" height="54px"> 
                 <line x1="0" y1="50%" x2="100%  " y2="50%" stroke="black"
           stroke-dasharray="4" />
             </svg>
             <p class="update-time">
-                2019-01-24 14:00 更新
+                {{PublishTime}} 更新
             </p>
         </div>
     <main>
         <div class="detail-panel">
             <div class="general-info">
-                <h3 class="current-area">前金</h3>
-                <h3 class="current-AQI">156</h3>
+                <h3 class="current-area">{{currentSite}}</h3>
+                <h3 class="current-AQI">{{AQI}}</h3>
                 <div class="clear"></div>
             </div>
             
             <div class="property">
                 <p class="name">臭氧<span class="unit">O3 (ppb)</span></p>
-                <p class="val">82</p>
+                <p class="val">{{O3}}</p>
                 <div class="clear"></div>
             </div>
             
             <div class="property">
                 <p class="name">懸浮微粒<span class="unit">PM10 (μg/m³)</span></p>
-                <p class="val">82</p>
+                <p class="val">{{PM10}}</p>
                 <div class="clear"></div>
             </div>
             <div class="property">
                 <p class="name">細懸浮微粒<span class="unit">PM2.5 (μg/m³)</span></p>
-                <p class="val">82</p>
+                <p class="val">{{PM2dot5}}</p>
                 <div class="clear"></div>
             </div>
             <div class="property">
                 <p class="name">一氧化碳<span class="unit">CO (ppm)</span></p>
-                <p class="val">82</p>
+                <p class="val">{{CO}}</p>
                 <div class="clear"></div>
             </div>
             <div class="property">
                 <p class="name">二氧化硫<span class="unit">SO2 (ppb)</span></p>
-                <p class="val">82</p>
+                <p class="val">{{SO2}}</p>
                 <div class="clear"></div>
             </div>
             <div class="property">
                 <p class="name">二氧化氮<span class="unit">NO2 (ppb)</span></p>
-                <p class="val">82</p>
+                <p class="val">{{NO2}}</p>
                 <div class="clear"></div>
             </div>
         </div>
         <div class="areas">
-            <div class="area-info">
-                <h3 class="name">前金</h3>
-                <h3 class="AQI">156</h3>
-                <div class="clear"></div>
-            </div>
-            <div class="area-info">
-                <h3 class="name">前金</h3>
-                <h3 class="AQI">156</h3>
-                <div class="clear"></div>
-            </div>
-            <div class="area-info">
-                <h3 class="name">前金</h3>
-                <h3 class="AQI">156</h3>
-                <div class="clear"></div>
-            </div>
-            <div class="area-info">
-                <h3 class="name">前金</h3>
-                <h3 class="AQI">156</h3>
-                <div class="clear"></div>
-            </div>
-            <div class="area-info">
-                <h3 class="name">前金</h3>
-                <h3 class="AQI">156</h3>
-                <div class="clear"></div>
-            </div>
-            <div class="area-info">
-                <h3 class="name">前金</h3>
-                <h3 class="AQI">156</h3>
-                <div class="clear"></div>
-            </div>
+            <div v-for="ele in selectedSite" class="area-info" v-on:click="changeSite(ele.name)">
+
+                    <h3 class="name" v-bind:class="ele.color">{{ele.name}}</h3>
+                    <h3 class="AQI " >{{ele.AQI}}</h3>
+                    <div class="clear"></div>
+                    
+                </div>
+            
         </div>
         <div class="clear"></div>
     </main>
     </div>
-    
+    <footer>
+
+    </footer>
 </body>
 </html>
