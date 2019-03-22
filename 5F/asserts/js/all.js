@@ -3,7 +3,7 @@ const app = new Vue({
     el:'#wrapper',
     data:{
         //url : "https://script.google.com/macros/s/AKfycbykHnWxeGF1E0jt6pkgdx4P9q_XaF0tkJs0BFbNCzjAyGPeQeQ/exec?url=http://opendata.epa.gov.tw/webapi/Data/REWIQA/?format=json",
-        url : "//34.80.220.180:3000/corskiller/http://opendata.epa.gov.tw/webapi/Data/REWIQA/?format=json"
+        url : "//34.80.220.180:3000/corskiller/http://opendata.epa.gov.tw/webapi/Data/REWIQA/?format=json",
         AQIData : '',
         AQINewData : {},
         currentCity : '屏東縣',
