@@ -26,6 +26,7 @@ const app = new Vue({
                 return response.json();
             })
             .then(json => {
+                document.querySelector('.loading').style.display = 'none';
                 this.AQIData = json;
                 this.beautifyData();
                 this.createOptions();
