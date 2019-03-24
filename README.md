@@ -21,3 +21,5 @@
 [JavaScript 浮点数陷阱及解法](https://github.com/camsong/blog/issues/9)  
 ### 時區  
 [利用原生 JavaScript 計算各時區時間](https://noob.tw/js-timezone)
+### 空氣指標
+[cors的解決方法](https://noob.tw/js-cors/)
