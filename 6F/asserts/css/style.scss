@@ -54,7 +54,7 @@ $mainWhite : #FFFFFF;
 }
 body{
     background-color: $mainColor;
-    font-family: 'Noto Sans'
+    font-family:'Noto Sans', 'Roboto';
 }
 .hidden{
     display: none !important;
