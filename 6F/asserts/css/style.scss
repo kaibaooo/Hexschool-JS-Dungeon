@@ -1,0 +1,235 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+$mainColor : #FF9D00;
+$mainWhite : #FFFFFF;
+
+.text-white{
+    color: #FFFFFF;
+}
+
+.text-main{
+    color: #FF9D00;
+}
+body{
+    background-color: $mainColor;
+    font-family: 'Noto Sans'
+}
+.hidden{
+    display: none !important;
+}
+.flex-container{
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.welcome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+
+    .number-60{
+        font-weight: bold;
+        display: inline-block;
+        font-size: 240px;
+        text-shadow: #000000 12px 0px 0px;
+    }
+    .subtitle{
+        font-weight: bolder;
+        display: inline-block;
+        font-size: 96px;
+        span{
+            vertical-align: top;
+            position: relative;
+            font-size: 44px;
+            border-bottom: #FFFFFF solid 4px;
+            line-height: 96px;
+            &:before{
+                content: " ";
+                position: absolute;
+                height: 4px;
+                width: 100px;
+                bottom: 5px;
+                border-bottom: #FFFFFF solid 4px;
+            }
+        }
+    }
+    .start-btn{
+        margin-top: 104px;
+        width: 350px;
+        height: 58px;
+        font-size: 36px;
+        line-height: 58px;
+        text-align: center;
+        color: $mainColor;
+        background-color: #000000;
+        cursor: pointer;
+    }
+
+    .start-info{
+        font-size: 24px;
+        font-style: italic;
+    }
+}
+.gaming{
+    width: 65%;
+    .gameInfo{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-flow: row;
+    }
+    .game-title{
+        box-sizing: border-box;
+        border: $mainWhite solid 4px;
+        color: $mainWhite;
+        font-size: 30px;
+        padding: 8px;
+    }
+    .score-title{
+        background-color: $mainWhite;
+        color: $mainColor;
+        width: 114px;
+        height: 55px;
+        font-size: 30px;
+        line-height: 55px;
+        text-align: center;
+        display: inline-block;
+    }
+    .score{
+        display: inline-block;
+        font-weight: bold;
+        // line-height: 55px;
+        font-size: 44px;
+        vertical-align: bottom;
+        margin-bottom: 5px;
+    }
+    .time-counter{
+        color: $mainWhite;
+        text-align: center;
+        font-size: 96px;
+        font-style: italic;
+    }
+    .problem{
+        margin-top: 100px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 55px;
+        .num1, .num2, .input{
+            color: #000000;
+            font-size: 112px;
+            
+        }
+        .equal, .operater{
+            color: $mainWhite;
+            font-size: 112px;
+        }
+        .input{
+            display: inline-block;
+            margin-top: 50px;
+             position: relative;
+             min-width: 300px;
+            span{
+                
+                background-color: #fff;
+                padding: 3px 10px;
+            }
+            p{
+                display: block;
+                color: $mainWhite;
+                text-align: center;
+                font-size: 20px;
+                font-weight: lighter;
+            }
+            &:after{
+                    display: block;
+                    width: 100%;
+                    font-weight: lighter;
+                    position: absolute;
+                    color: $mainWhite;
+                    content: "press enter to answer";
+                    font-size: 18px;
+                    text-align: center;
+                    top: 100px;
+                    
+            }
+        }
+        
+    }
+}
+.result{
+    h1{
+        width: 400px;
+        margin: 0 auto;
+        font-size: 30px;
+        text-align: center;
+        color: #FFFFFF;
+        box-sizing: border-box;
+        border: #ffffff solid 4px;
+        padding: 8px 16px;
+    }
+    p{
+        font-size: 56px;
+    }
+    .score{
+        font-size: 112px;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .retry{
+        margin: 0 auto;
+        margin-top: 70px;
+        width: 350px;
+        height: 58px;
+        font-size: 36px;
+        line-height: 58px;
+        text-align: center;
+        color: $mainColor;
+        background-color: #000000;
+        cursor: pointer;
+    }
+}
