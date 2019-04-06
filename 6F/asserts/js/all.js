@@ -61,6 +61,7 @@ class Game {
                 else {
                     if(this.score > 0)
                         this.score--;
+                    document.querySelector('.incorrect').play();
                 }
                 break;
             case '−':
@@ -72,6 +73,7 @@ class Game {
                 else {
                     if(this.score > 0)
                         this.score--;
+                    document.querySelector('.incorrect').play();
                 }
                 break;
             case '×':
@@ -82,6 +84,7 @@ class Game {
                 else {
                     if(this.score > 0)
                         this.score--;
+                    document.querySelector('.incorrect').play();
                 }
                 break;
             case '÷':
@@ -92,6 +95,7 @@ class Game {
                 else {
                     if(this.score > 0)
                         this.score--;
+                    document.querySelector('.incorrect').play();
                 }
                 break;
                 
