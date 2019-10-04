@@ -18,7 +18,9 @@
 |10F|Chrome 應用程式 (幹話產生器)||||||
 |11F|燈箱效果||||||
 |12F|拼圖||||||
-
+|13F|貪吃蛇||||||
+|14F|神明求籤||||||
+|15F|死亡筆記本||||||
 ## References
 ### 計算機  
 [JavaScript 浮点数陷阱及解法](https://github.com/camsong/blog/issues/9)  
